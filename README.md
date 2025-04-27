@@ -17,14 +17,14 @@ The course consisted of two midterm exams, a final project (which is the content
 
 For the final project, we were tasked with building a complete Flask web application. In my case, I developed a dating platform with several key features:
 
-User Authentication: Users can securely register and log in to their accounts.
+- User Authentication: Users can securely register and log in to their accounts.
 
-Profile Creation: Authenticated users can create and personalize their dating profiles.
+- Profile Creation: Authenticated users can create and personalize their dating profiles.
 
-Matchmaking System: Users can like or pass on profiles, and mutual likes result in matches.
+- Matchmaking System: Users can like or pass on profiles, and mutual likes result in matches.
 
-Messaging: Matched users can exchange messages within the platform.
+- Messaging: Matched users can exchange messages within the platform.
 
-Photo Upload: Users can upload profile pictures to make their profiles more engaging.
+- Photo Upload: Users can upload profile pictures to make their profiles more engaging.
 
-Responsive Design: The web application is optimized for a smooth experience across a range of devices and screen sizes.
+- Responsive Design: The web application is optimized for a smooth experience across a range of devices and screen sizes.
