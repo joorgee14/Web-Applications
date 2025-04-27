@@ -3,15 +3,15 @@ Project Grade: 9.25
 
 The main objectives of this course were to:
 
-Understand the fundamental concepts and principles of web development, including the protocols that govern web communication, such as HTTP and TLS.
+- Understand the fundamental concepts and principles of web development, including the protocols that govern web communication, such as HTTP and TLS.
 
-Gain proficiency in essential client-side technologies: HTML, CSS, and JavaScript.
+- Gain proficiency in essential client-side technologies: HTML, CSS, and JavaScript.
 
-Work with a server-side framework to develop robust and scalable web applications.
+- Work with a server-side framework to develop robust and scalable web applications.
 
-Connect web applications to databases effectively using an object-relational mapping (ORM) system.
+- Connect web applications to databases effectively using an object-relational mapping (ORM) system.
 
-Acquire practical experience working with Flask.
+- Acquire practical experience working with Flask.
 
 The course consisted of two midterm exams, a final project (which is the content of this repository), and a final exam.
 
