@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dating App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/navbar.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Dating App{% endblock %}</h1>
+        <nav>
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('main.index') }}">Home</a>
+                    <a href="{{ url_for('profile.edit_profile') }}">Edit Profile</a>
+                    <a href="{{ url_for('preferences.matching_preferences') }}">Matching Preferences</a>
+                    <a href="{{ url_for('proposals.sent_proposals') }}">Sent Proposals</a>
+                    <a href="{{ url_for('proposals.received_proposals') }}">Received Proposals</a>
+                    <a href="{{ url_for('likes.my_likes') }}">View My Likes</a>
+                    <a href="{{ url_for('blocks.my_blocks') }}">View My Blocks</a>
+                    <a href="{{ url_for('events.create_event') }}">Create Event</a>
+                    <a href="{{ url_for('events.view_events') }}">Events</a>
+                    <a href="{{ url_for('auth.logout') }}">Logout</a>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Dating App. All rights reserved.</p>
+    </footer>
+</body>
+</html>

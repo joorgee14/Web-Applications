@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Respond to Proposal{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="proposal-details mt-4 mb-5">
+        <h2 class="text-primary">Proposal Details</h2>
+        <div class="form-group border rounded p-3 bg-light">
+            <p><strong>Proposer:</strong> {{ proposal.proposer.first_name }} {{ proposal.proposer.last_name }}</p>
+            <p><strong>Date:</strong> {{ proposal.date_time.strftime('%Y-%m-%d') }}</p>
+            <p><strong>Message:</strong> {{ proposal.optional_text_proposal or "No message provided" }}</p>
+        </div>
+    </section>
+
+    <form method="POST" class="form-group bg-white p-4 shadow rounded">
+        <h3 class="mb-4 text-secondary">Your Response</h3>
+        <div class="form-group mb-3">
+            <label for="status" class="form-label"><strong>Response:</strong></label>
+            <select id="status" name="action" class="form-control" required onchange="toggleRescheduleDate()">
+                <option value="" disabled selected>-- Select a Response --</option>
+                <option value="accept">Accept</option>
+                <option value="reject">Reject</option>
+                <option value="reschedule">Reschedule</option>
+                <option value="ignore">Ignore</option>
+            </select>
+        </div>
+
+        <div id="reschedule-date-section" class="form-group mb-3" style="display: none;">
+            <label for="new_date" class="form-label"><strong>Reschedule Date:</strong></label>
+            <input type="date" id="new_date" name="new_date" class="form-control">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="optional_text_response" class="form-label"><strong>Optional Message:</strong></label>
+            <textarea id="optional_text_response" name="optional_text_response" class="form-control" rows="4" placeholder="Write a message (optional)"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Submit Response</button>
+    </form>
+</div>
+
+<script>
+    function toggleRescheduleDate() {
+        const status = document.getElementById("status").value;
+        const rescheduleSection = document.getElementById("reschedule-date-section");
+        rescheduleSection.style.display = (status === "reschedule") ? "block" : "none";
+    }
+</script>
+{% endblock %}

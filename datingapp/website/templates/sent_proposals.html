@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Sent Proposals{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Sent Proposals</h1>
+
+    {% if proposals %}
+        <ul class="list-group">
+            {% for proposal in proposals %}
+                <li class="list-group-item">
+                    <strong>To:</strong> {{ proposal.recipient.username }} <br>
+                    <strong>Date:</strong> {{ proposal.date_time.strftime('%Y-%m-%d') }} <br>
+                    <strong>Status:</strong> {{ proposal.status.name | replace('_', ' ') | title() }} <br>
+
+                    {% if proposal.status in ['accepted', 'rejected', 'reschedule'] %}
+                        <strong>Response:</strong> {{ proposal.optional_text_response or "No response provided" }} <br>
+                    {% endif %}
+
+                    {% if proposal.status == 'proposed' %}
+                        <!-- Show 'Respond' button if the proposal is still in 'proposed' state -->
+                        <a href="{{ url_for('proposals.respond_to_proposal', proposal_id=proposal.id) }}" class="btn btn-info">Respond</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No sent proposals at the moment.</p>
+    {% endif %}
+</div>
+{% endblock %}

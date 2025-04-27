@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dating App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/loading.css') }}">
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">Dating App</h1>
+    </header>
+    <main class="main-content"> 
+        <section class="intro">
+            <img class="intro__logo" src="../static/photos/foto2.jpg" alt="Dating App Logo">
+            <h2 class="intro__message">Find your perfect match today!</h2>
+            <button class="intro__button" onclick="window.location.href='signup'">Start Matching</button>
+            <h3 class="intro__login">Already have an account? <a href="login">Login</a></h3>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__text">&copy; 2025 Dating App. All rights reserved.</p>
+    </footer>
+</body>
+</html>

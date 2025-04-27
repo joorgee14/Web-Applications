@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ profile.first_name }}'s Profile{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        <h2>{{ profile.first_name }}'s Profile</h2>
+        
+        <!-- Profile Photo -->
+        {% if profile.photo %}
+            <img src="{{ url_for('static', filename='photos/photo-' ~ profile.photo.id ~ '.' ~ profile.photo.file_extension) }}" alt="{{ profile.first_name }}'s Photo" class="profile-photo">
+        {% else %}
+            <img src="{{ url_for('static', filename='default_profile.png') }}" alt="Default Photo" class="profile-not-photo">
+        {% endif %}
+        
+        <!-- Profile Information (Gender, Birth, Description) -->
+        <div class="profile-details">
+            <p><strong>Gender:</strong> {{ profile.gender if profile.gender else "Not specified" }}</p>
+            <p><strong>Birth:</strong> {{ profile.birth if profile.birth else "Not specified" }}</p>
+            <p><strong>Description:</strong> {{ profile.description if profile.description else "No description provided" }}</p>
+        </div>
+
+        <!-- Action Buttons -->
+        {% if profile.id != current_user.id %}
+            <div class="profile-buttons">
+                <a href="{{ url_for('proposals.propose_date', recipient_id=profile.id) }}" class="btn btn-primary">Propose a Date</a>
+
+                <!-- Like Button -->
+                <form action="{{ url_for('likes.like_user', user_id=profile.id) }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-success">Like</button>
+                </form>
+
+                <!-- Block Button -->
+                <form action="{{ url_for('blocks.block_user', user_id=profile.id) }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Block</button>
+                </form>
+            </div>
+        {% endif %}
+        
+        <!-- Back Button -->
+        <a href="{{ url_for('main.index') }}" class="btn btn-secondary">Back to Main Page</a>
+    </div>
+{% endblock %}

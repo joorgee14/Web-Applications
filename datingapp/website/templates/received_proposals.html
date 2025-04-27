@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Received Proposals{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Received Proposals</h1>
+
+    {% if proposals %}
+        <ul class="list-group">
+            {% for proposal in proposals %}
+                <li class="list-group-item">
+                    <strong>From:</strong> {{ proposal.proposer.username }} <br>
+                    <strong>Date:</strong> {{ proposal.date_time }} <br>
+                    <strong>Status:</strong> {{ proposal.status.name }} <br>
+                    {% if proposal.status == ProposalStatus.proposed %}
+                        <a href="{{ url_for('proposals.respond_to_proposal', proposal_id=proposal.id) }}" class="btn btn-primary">Respond</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No received proposals at the moment.</p>
+    {% endif %}
+</div>
+{% endblock %}

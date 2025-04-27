@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Edit Your Profile</h2>
+    <form method="POST" action="{{ url_for('profile.edit_profile') }}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" class="form-control" value="{{ user.first_name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" class="form-control" value="{{ user.last_name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="form-control">{{ profile.description }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Profile Photo:</label>
+            <input type="file" id="photo" name="photo" class="form-control">
+        </div>
+
+        {% if profile.photo %}
+            <div class="form-group text-center">
+                <img src="{{ url_for('static', filename='photos/photo-' ~ profile.photo.id ~ '.' ~ profile.photo.file_extension) }}" alt="Current Profile Photo" class="profile-photo">
+            </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+{% endblock %}

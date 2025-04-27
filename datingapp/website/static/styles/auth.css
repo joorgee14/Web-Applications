@@ -1,0 +1,106 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Form Container */
+.form-container {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90vw;
+    max-width: 400px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Form Elements */
+form {
+    margin: 0;
+}
+
+form label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+form textarea {
+    resize: none;
+}
+
+/* Submit Button */
+form button {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #005fa3;
+}
+
+/* Extra Links */
+.extra-links {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.extra-links a {
+    color: #0077cc;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.extra-links a:hover {
+    text-decoration: underline;
+}
+
+.flash-messages {
+    margin-bottom: 1rem;
+}
+.flash-message {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+}
+.flash-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+.flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.flash-message.info {
+    background-color: #cce5ff;
+    color: #004085;
+}
+

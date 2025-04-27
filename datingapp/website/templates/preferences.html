@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Update Matching Preferences{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Update Matching Preferences</h2>
+        <form method="POST" action="{{ url_for('preferences.matching_preferences') }}">
+            <div class="form-group">
+                <label for="gender">Preferred Gender:</label>
+                <select id="gender" name="gender" class="form-control">
+                    <option value="male" {% if matches.gender_preference.name == 'Male' %}selected{% endif %}>Male</option>
+                    <option value="female" {% if matches.gender_preference.name == 'Female' %}selected{% endif %}>Female</option>
+                    <option value="other" {% if matches.gender_preference.name == 'Other' %}selected{% endif %}>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="min_age">Maximum Years Below Your Age:</label>
+                <input type="number" id="min_age" name="min_age" class="form-control" value="{{ matches.min_age }}" required>
+            </div>
+            <div class="form-group">
+                <label for="max_age">Maximum Years Above Your Age:</label>
+                <input type="number" id="max_age" name="max_age" class="form-control" value="{{ matches.max_age }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Preferences</button>
+        </form>
+    </div>
+{% endblock %}

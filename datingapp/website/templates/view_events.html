@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="events-list-container">
+        <h2>Available Events</h2>
+        <ul class="events-list">
+            {% for event in events %}
+                <li class="event-item">
+                    <h3>{{ event.title }}</h3>
+                    <p>{{ event.description or "No description provided." }}</p>
+                    <p><strong>Location:</strong> {{ event.location or "No location specified." }}</p>
+                    <p><strong>Date:</strong> {{ event.event_date.strftime('%Y-%m-%d') }}</p>
+                    <p><strong>Time:</strong> {{ event.event_date.strftime('%H:%M') }}</p>
+
+                    <!-- Display the author of the event (creator) -->
+                    <p><strong>Author:</strong> 
+                        <a href="{{ url_for('profile.view_profile', user_id=event.creator.id) }}">{{ event.creator.username }}</a>
+                    </p>
+
+                    <!-- Display the participants -->
+                    <p><strong>Participants:</strong>
+                        {% if event.participants %}
+                            <ul>
+                                {% for participant in event.participants %}
+                                    <li>
+                                        <a href="{{ url_for('profile.view_profile', user_id=participant.user.id) }}">{{ participant.user.username }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            No participants yet.
+                        {% endif %}
+                    </p>
+
+                    <!-- Register button -->
+                    <form action="{{ url_for('events.register_event', event_id=event.id) }}" method="POST">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

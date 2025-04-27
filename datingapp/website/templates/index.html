@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <h2>Find your perfect match!</h2>
+    <div class="profiles">
+        {% for profile in profiles %}
+        <div class="profile-card">
+            {% if profile.photo %}
+                <!-- Display user's photo if it exists -->
+                <img src="{{ url_for('static', filename='photos/photo-' ~ profile.photo.id ~ '.' ~ profile.photo.file_extension) }}" alt="{{ profile.user.first_name }}'s Photo" class="profile-photo">
+            {% else %}
+                <!-- Fallback to default photo if no profile photo exists -->
+                <img src="{{ url_for('static', filename='default_profile.png') }}" alt="Default Photo" class="profile-not-photo">
+            {% endif %}
+            <h3>{{ profile.user.first_name if profile.user.first_name else "No name" }}</h3>
+            <p><strong>Date of Birth:</strong> {{ profile.birth if profile.birth else "Not specified" }}</p>
+            <a href="{{ url_for('profile.view_profile', user_id=profile.user_id) }}" class="view-profile">View Profile</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
